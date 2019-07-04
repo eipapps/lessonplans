@@ -1,3 +1,4 @@
+
 'use strict';
 $(document).ready(async function () {
     const res = await axios.get('https://script.google.com/macros/s/AKfycbxCKtyJP8X3vpOXTDCaENAesVXa8gWwzw4BSAnk6iIGWz8FFMqi/exec');
@@ -81,7 +82,7 @@ function LoadCurrentReport(oResults) {
 
 
 
-$('.custom-select-md').click((function () {
+$('.custom-select-md').on("change",(function () {
     const value = $(this).val().toLowerCase();
     $(".rows-employees").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -94,4 +95,3 @@ $('.form-control').keyup(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
-
