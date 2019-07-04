@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eipapps/centers.git"
+    "url": "git+https://github.com/eipapps/lessonplans.git"
   },
   "keywords": [
     "dlee"
@@ -16,9 +16,9 @@
   "author": "dle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eipapps/centers/issues"
+    "url": "https://github.com/eipapps/lessonplans/issues"
   },
-  "homepage": "https://github.com/eipapps/centers#readme",
+  "homepage": "https://github.com/eipapps/lessonplans#readme",
   "dependencies": {
     "moment": "^2.24.0"
   }
