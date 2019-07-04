@@ -54,32 +54,19 @@ const interset = async function(jres){
                         series.appendChild(option);
                     };
                 }
+                if (property === 'level') {
+                    const option = await document.createElement('option');
+                    const series = document.querySelector('#level');
+                    option.textContent = datarow[property];
+                    
+                    if (! series.textContent.includes(option.textContent)){
+                        series.appendChild(option);
+                    };
+                }
             }
             table.appendChild(newRow);
         })
 }
-
-function LoadCurrentReport(oResults) {
-    var jsonString = oResults;
-       //Load  datatable
-    var oTblReport = $("#tblReportResultsDemographics")
-    oTblReport.DataTable ({
-        "data" : jsonString,
-        "columns" : [
-            // { "data" : "id" },
-            { "data" : "Name" },
-            { "data" : "parents" },
-            { "data" : "Type" },
-            // { "data" : "download" },
-            { "data" : "Size" },
-            // { "data" : "Link" },
-            { "data" : "Last Updated" },
-            { "data" : "Owner" }
-        ]
-    });
-}
-
-
 
 
 $('.custom-select-md').on("change",(function () {
