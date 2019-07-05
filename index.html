@@ -263,10 +263,9 @@
 	<script type="text/javascript" src="./download_files/saved_resource(1).js"></script>
 	<link rel="stylesheet" id="all-css-0-2" href="./download_files/style.css" type="text/css" media="all">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/msdropdown/dd.css" />	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
-
+	
 	<!-- Jetpack Open Graph Tags -->
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Direccion de Lenguas Extranjeras">
@@ -510,21 +509,29 @@
 								style="padding: 3%; font-size: 50%">
 						</form>
 						<!--Blue select-->
-						<div style="display: inline-block;   width: 100%; justify-content: center">
-							<select id="series" class="custom-select-md mt-2"
-								style="float:left; margin:1%;font-size: 100%; width: 40%; border-radius: 5%; font-family: inherit;">
-								<option selected>select series</option>
-
-
-							</select>
+						<div class="select-menus" style="display: inline-block;   width: 100%; justify-content: center"
+						>
+						<div class="error">
+							
+						</div>
 							<select id="level" class="custom-select-md mt-2"
 								style="float:left; margin:1%; margin-right:10px; font-size: 100%; width: 40%; border-radius: 5%; font-family: inherit;">
-								<option selected>select Level</option>
+								<option selected >select Level</option>
 							</select>
+							<select id="series" class="custom-select-md mt-2"
+								style="float:left; margin:1%;font-size: 100%; width: 40%; border-radius: 5%; font-family: inherit;"
+								data-toggle="tooltip" data-html="true" title="Please select all fields">
+								<option selected>select series</option>
+								<option >Interchange</option>
+								<option >Double Click</option>
+								<option >Passages</option>
+								
 
+							</select>
 
 						</div>
 						<!--/Blue select-->
+						<img src="./download_files/loading.gif" id="loading" alt="loading" style="height: 100px; width: 100px;position: relative; left: 50%;">
 						<!-- table-->
 						<div class="container"
 							style="font-size: 70%; width: 120%; box-shadow:0 8px 16px 0 rgba(0,0,0,0.281), 0 12px 30px 0 rgba(0,0,0,0.281);margin:10px;text-align:justify;line-height:1.3;">
@@ -532,7 +539,7 @@
 								<div id="display" class="table-responsive-xl">
 									<table id="tblReportResultsDemographics" class="table table-striped w-auto"
 										cellspacing="0" width="100%">
-										<div style="position:fixed;">
+										<div>
 											<thead>
 												<tr class="flex-row" scope="row">
 													<th class="flex-column" scope="col">Series</th>

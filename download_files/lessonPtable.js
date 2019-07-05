@@ -1,10 +1,16 @@
 
 'use strict';
 $(document).ready(async function () {
+    $('#tblReportResultsDemographics').hide();
     const res = await axios.get('https://script.google.com/macros/s/AKfycbxCKtyJP8X3vpOXTDCaENAesVXa8gWwzw4BSAnk6iIGWz8FFMqi/exec');
     const jres = await res.data;
-    interset(jres);
-    
+    let ready = false;
+    ready = await interset(jres);
+    if(ready){
+        $('#loading').fadeOut();
+        $('#tblReportResultsDemographics').fadeIn();
+
+    }
 });
 
 const interset = async function(jres){
@@ -45,36 +51,29 @@ const interset = async function(jres){
                     Rowdiv.setAttribute('class', 'd-flex flex-wrap-reverse');
                     Rowdiv.appendChild(newRow);
                 }
-                if (property === 'Name') {
-                    const option = await document.createElement('option');
-                    const series = document.querySelector('#series');
-                    option.textContent = datarow[property];
-                    
-                    if (! series.textContent.includes(option.textContent)){
-                        series.appendChild(option);
-                    };
-                }
-                if (property === 'level') {
-                    const option = await document.createElement('option');
-                    const series = document.querySelector('#level');
-                    option.textContent = datarow[property];
-                    
-                    if (! series.textContent.includes(option.textContent)){
-                        series.appendChild(option);
-                    };
-                }
+                        // if (property === 'Name') {
+                        //     const option = await document.createElement('option');
+                        //     const series = document.querySelector('#series');
+                        //     option.textContent = datarow[property];
+                            
+                        //     if (! series.textContent.includes(option.textContent)){
+                        //         series.appendChild(option);
+                        //     };
+                        // }
+                        if (property === 'level') {
+                            const option = await document.createElement('option');
+                            const series = document.querySelector('#level');
+                            option.textContent = datarow[property];
+                            
+                            if (! series.textContent.includes(option.textContent)){
+                                series.appendChild(option);
+                            };
+                        }
             }
             table.appendChild(newRow);
         })
+        return true;
 }
-
-
-$('.custom-select-md').on("change",(function () {
-    const value = $(this).val().toLowerCase();
-    $(".rows-employees").filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-}));
 
 $('.form-control').keyup(function () {
     const value = $(this).val().toLowerCase();
@@ -82,3 +81,50 @@ $('.form-control').keyup(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
+
+const showError = function () {
+    const series = $('#series').val().toLocaleLowerCase();
+    const level = $('#level').val().toLocaleLowerCase();
+    const error = document.querySelector('.error');
+      error.setAttribute('style', 'color: red');
+      error.textContent = 'Please select all fields to continue using the filter'
+     
+    if (series === 'select series' || level === 'select level') {
+        $('.error').show();
+        } else {
+           $('.error').hide();
+            
+    }
+
+}
+
+$('#level').on("change",(function () {
+    showError();
+    const series = $('#series').val().toLocaleLowerCase();
+    const value = $(this).val().toLowerCase();
+    $(".rows-employees").filter(function () {
+        const cells = $(this).text().toLowerCase();
+        if (!cells.includes(value) || !cells.includes(series)){
+            $(this).hide();
+        }else {
+            $(this).show();
+        }
+    });
+}));
+$('#series').on("change",(function () {
+    showError();
+    const level = $('#level').val().toLocaleLowerCase();
+    const value = $(this).val().toLowerCase();
+    $(".rows-employees").filter(function () {
+        const cells = $(this).text().toLowerCase();
+        if (!cells.includes(value) || !cells.includes(level)){
+            $(this).hide();
+        }else {
+            $(this).show();
+        }
+    });
+}));
+
+
+    
+ 

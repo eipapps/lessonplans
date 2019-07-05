@@ -38,4 +38,13 @@
         color: white ;
         background-color: rgb(19,83,147);
       }
-    
+      .error {
+        float:left;
+         margin:1%; 
+         margin-right:10px; 
+         font-size: 70%; 
+         width: 100%; 
+         border-radius: 5%; 
+         font-family: inherit; 
+        
+      }
